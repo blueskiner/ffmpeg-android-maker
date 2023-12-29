@@ -12,6 +12,7 @@ SOURCE_TYPE=TAR
 SOURCE_VALUE=6.1
 EXTERNAL_LIBRARIES=()
 FFMPEG_GPL_ENABLED=false
+FFMPEG_NONFREE_ENABLED=false
 
 # All FREE libraries that are supported
 SUPPORTED_LIBRARIES_FREE=(
@@ -130,6 +131,10 @@ for argument in "$@"; do
   --enable-all-gpl | -all-gpl)
     EXTERNAL_LIBRARIES+=" ${SUPPORTED_LIBRARIES_GPL[@]}"
     FFMPEG_GPL_ENABLED=true
+    ;;
+  --enable-libfdk-aac|-fdkaac)
+    EXTERNAL_LIBRARIES+=( "libfdk-aac" )
+    FFMPEG_NONFREE_ENABLED=true
     ;;
   *)
     echo "Unknown argument $argument"

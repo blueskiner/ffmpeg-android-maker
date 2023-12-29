@@ -88,6 +88,9 @@ do
   # with actual path of the source code. This is done for possiblity to switch
   # between different verions of a component.
   # If it isn't set, consider SOURCE_DIR_FOR_COMPONENT as the proper value
+  if [ $COMPONENT = "libfdk-aac" ]; then
+    COMPONENT="libfdk_aac"
+  fi
   COMPONENT_SOURCES_DIR_VARIABLE=SOURCES_DIR_${COMPONENT}
   if [[ -z "${!COMPONENT_SOURCES_DIR_VARIABLE}" ]]; then
      export SOURCES_DIR_${COMPONENT}=${SOURCE_DIR_FOR_COMPONENT}
@@ -106,7 +109,12 @@ do
   for COMPONENT in ${COMPONENTS_TO_BUILD[@]}
   do
     echo "Building the component: ${COMPONENT}"
-    COMPONENT_SOURCES_DIR_VARIABLE=SOURCES_DIR_${COMPONENT}
+    if [ ${COMPONENT} = "libfdk-aac" ]
+    then
+      COMPONENT_SOURCES_DIR_VARIABLE=SOURCES_DIR_libfdk_aac
+    else
+      COMPONENT_SOURCES_DIR_VARIABLE=SOURCES_DIR_${COMPONENT}
+    fi
 
     # Going to the actual source code directory of the current component
     cd ${!COMPONENT_SOURCES_DIR_VARIABLE}

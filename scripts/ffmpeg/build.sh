@@ -13,6 +13,9 @@ esac
 if [ "$FFMPEG_GPL_ENABLED" = true ] ; then
     EXTRA_BUILD_CONFIGURATION_FLAGS="$EXTRA_BUILD_CONFIGURATION_FLAGS --enable-gpl"
 fi
+if [ "$FFMPEG_NONFREE_ENABLED" = true ] ; then
+    EXTRA_BUILD_CONFIGURATION_FLAGS="$EXTRA_BUILD_CONFIGURATION_FLAGS --enable-nonfree"
+fi
 
 # Preparing flags for enabling requested libraries
 ADDITIONAL_COMPONENTS=

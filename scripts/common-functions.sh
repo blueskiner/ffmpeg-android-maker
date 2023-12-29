@@ -29,5 +29,10 @@ function downloadTarArchive() {
     rm ${ARCHIVE_NAME}
   fi
 
-  export SOURCES_DIR_${LIBRARY_NAME}=$(pwd)/${LIBRARY_SOURCES}
+  if [ $LIBRARY_NAME = "libfdk-aac" ]
+    then
+    export SOURCES_DIR_libfdk_aac=$(pwd)/${LIBRARY_SOURCES}
+  else
+    export SOURCES_DIR_${LIBRARY_NAME}=$(pwd)/${LIBRARY_SOURCES}
+  fi
 }
